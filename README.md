@@ -1,4 +1,4 @@
-# code-quality-sonar-demo
+# code-quality
 
 一个可直接推到 GitHub 的完整示例，用来验证这条链路：
 
@@ -82,7 +82,7 @@ git init
 git add .
 git commit -m "chore: initial commit"
 git branch -M main
-git remote add origin https://github.com/<你的用户名>/code-quality-sonar-demo.git
+git remote add origin https://github.com/<你的用户名>/code-quality.git
 git push -u origin main
 ```
 
@@ -98,12 +98,12 @@ git push -u origin main
 2. 点右上角 `+` → `Analyze new project`，选择刚推送的仓库。
 3. 按提示安装 **SonarCloud GitHub App**（这是 PR 评论和检查状态能回传的前提）。
 4. 创建组织（organization）后，SonarCloud 会给出一段 GitHub Actions 配置，记下两个值：
-   - `projectKey`，默认形如 `<org>_code-quality-sonar-demo`
+   - `projectKey`，默认形如 `<org>_code-quality`
    - `organization`，就是你的组织 key
 5. 修改 `sonar-project.properties`：
 
    ```properties
-   sonar.projectKey=<org>_code-quality-sonar-demo
+   sonar.projectKey=<org>_code-quality
    sonar.organization=<org>
    ```
 

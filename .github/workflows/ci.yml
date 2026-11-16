@@ -110,6 +110,24 @@ jobs:
         with:
           name: test-reports
 
+      - name: Check SonarQube configuration
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+        run: |
+          missing=0
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "::error::缺少 SONAR_TOKEN，请到 Settings → Secrets and variables → Actions → Secrets 添加。"
+            missing=1
+          fi
+          if [ -z "$SONAR_HOST_URL" ]; then
+            echo "::error::缺少 SONAR_HOST_URL，请到 Settings → Secrets and variables → Actions → Variables 添加（SonarCloud 填 https://sonarcloud.io）。"
+            missing=1
+          fi
+          if [ "$missing" -ne 0 ]; then
+            exit 1
+          fi
+
       - name: SonarQube scan
         uses: SonarSource/sonarqube-scan-action@v8.5.0
         env:
