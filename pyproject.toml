@@ -1,0 +1,14 @@
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra --strict-markers"
+
+[tool.coverage.run]
+branch = true
+source = ["pricing"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 80

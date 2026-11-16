@@ -1,0 +1,1 @@
+# 运行时只依赖 Python 标准库（decimal / dataclasses），无需第三方包。
